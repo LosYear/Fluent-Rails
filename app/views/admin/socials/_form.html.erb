@@ -1,0 +1,16 @@
+<%= semantic_form_for [:admin, @social], :html => {:class => "form-horizontal", :multipart => true} do |f| %>
+    <%= f.semantic_errors :title, :link, :order, :status, :logo%>
+    <%= f.inputs do %>
+        <%= f.input :title %>
+        <%= f.input :link %>
+        <%= f.input :order %>
+        <%= f.input :status, :as => :boolean %>
+        <%= f.input :logo, :as => :file %>
+    <% end %>
+    <%= f.actions :class => 'form-group' do %>
+        <div class="col-lg-offset-2 col-lg-8">
+          <%= f.action :submit %>
+          <%= f.action :cancel %>
+        </div>
+    <% end %>
+<% end %>

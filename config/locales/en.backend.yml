@@ -1,0 +1,39 @@
+en:
+  backend_part:
+    users: "Users"
+    manage: "Manage"
+    home: "Home"
+    manage_users: "Manage users"
+    create_user: "Create user"
+    edit: "Edit"
+    remove: "Remove"
+    user: "User"
+    save: "Save"
+    cancel: "Cancel"
+    create: "Create"
+    you_must_fix_errors: "You must fix following errors:"
+    role: "Role"
+    roles: "Roles"
+    manage_roles: "Manage roles"
+    create_role: "Create role"
+    actions: "Actions"
+  activerecord:
+    errors:
+      models:
+        role:
+          attributes:
+            name:
+              blank: "can't be empty"
+    attributes:
+      user:
+        email: "Email"
+        password: "Password"
+        password_confirmation: "Password confirmation"
+        username: "Username"
+      role:
+        name: "Name"
+  formtastic:
+    actions:
+      create: "Create"
+      update: "Save changes"
+      cancel: "Cancel"

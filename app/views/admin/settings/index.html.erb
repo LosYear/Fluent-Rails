@@ -1,0 +1,29 @@
+<%
+   # Defining breadcrumbs
+   @breadcrumbs = [
+           {:link => admin_settings_path, :title => t('backend_part.settings')},
+           {:title => t('backend_part.manage')}
+   ]
+
+   # Defining menu
+   @menu = [
+           {:link => admin_settings_path, :title => t('backend_part.manage_settings'), :icon => 'list'},
+           {:link => new_admin_setting_path, :title => t('backend_part.create_option'), :icon => 'file'},
+   ]
+%>
+
+<div class="page-header">
+  <h1><%= t('backend_part.settings') %>
+    <small> <%= t('backend_part.manage') %></small>
+  </h1>
+</div>
+
+<% columns = [
+        {:name => 'var', :searchable => true, :title => t('activerecord.attributes.settings.var')},
+        {:name => 'value', :searchable => true, :title => t('activerecord.attributes.settings.value')},
+        {:name => 'actions_grid_column', :title => t('backend_part.actions'), :edit => method(:edit_admin_setting_path), :remove => method(:admin_settings_path), :sortable => false},
+] %>
+
+<%= gridview_helper columns, {:class => "table table-striped table-bordered table-condensed",
+                              :source => admin_settings_url,
+                              :fnDrawCallback => "function(){$('a#tooltip').tooltip()}"} %>

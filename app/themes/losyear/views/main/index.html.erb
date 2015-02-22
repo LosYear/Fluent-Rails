@@ -1,0 +1,43 @@
+<header>
+  <div class="wrapper">
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <%= render_menu 'home', :class => 'nav navbar-nav navbar-right' %>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+  </div>
+  <div class="wrapper">
+    <h1>Los<span>Year</span></h1>
+    <h1 class="slogan">Losev Yaroslav</h1>
+  </div>
+</header>
+
+<!--<div class="description-text">
+    <div class="wrapper">
+        <h2>Block header</h2>
+        <div class="separator"></div>
+        <p class="col-lg-8 col-md-8 col-lg-offset-2 col-md-offset-2">Sed a lorem quis neque interdum consequat ut sed sem. Duis quis tempor nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus. Praesent id tempor ipsum. Fusce at massa ac nunc porta fringilla sed eget neque. Quisque quis pretium nulla. Fusce eget bibendum neque, vel volutpat augue. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
+    </div>
+</div>-->
+
+<div class="socials">
+  <div class="wrapper">
+    <h2>Socials</h2>
+    <div class="separator"></div>
+    <%= socials_list %>
+  </div>
+  <div style="clear:both"></div>
+</div>

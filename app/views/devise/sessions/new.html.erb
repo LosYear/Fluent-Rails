@@ -1,0 +1,22 @@
+<div class="container">
+  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-signin'}) do |f| %>
+      <h2 class="form-signin-heading"><%= t('user.sign_in') %></h2>
+
+      <% unless flash.empty? %>
+          <div class="alert alert-danger">
+              <% flash.each do |name, msg| %>
+                  <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+              <% end %>
+          </div>
+      <% end %>
+
+      <%= f.email_field :email, :autofocus => true, :class => 'form-control', :placeholder => t('activerecord.attributes.user.email') %>
+      <%= f.password_field :password, :class => 'form-control', :placeholder => t('activerecord.attributes.user.password') %>
+      <% if devise_mapping.rememberable? -%>
+          <label class="checkbox">
+            <%= f.check_box :remember_me %> <%= t('activerecord.attributes.user.remember_me') %>
+          </label>
+      <% end -%>
+      <%= f.submit t('user.sign_in'), :class => 'btn btn-lg btn-primary btn-block' %>
+   <% end %>
+</div>

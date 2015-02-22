@@ -1,0 +1,49 @@
+div.blog-posts{
+  h2{
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+
+  div.blog-post{
+    padding-top: 30px;
+    padding-bottom: 20px;
+
+    div.post-header{
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    div.time{
+      color: #8c9398;
+    }
+
+    &:nth-child(even){
+      background-color: #f3f5f8;
+    }
+
+    div.post-badge{
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 32px;
+      width: 32px;
+      background-image: url('text-post.png');
+    }
+
+    &.text-post div.post-badge{
+      background-image: url('text-post.png');
+    }
+
+    &.twitter-post div.post-badge{
+      background-image: url('twitter-post.png');
+    }
+
+    &.instagram-post div.post-badge{
+      background-image: url('instagram-post.png');
+    }
+
+    img{
+      max-width: 99%;
+    }
+  }
+}

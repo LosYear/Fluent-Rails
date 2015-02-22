@@ -1,0 +1,14 @@
+<div class="breadcrumbs">
+  <%= breadcrumbs_helper @breadcrumbs %>
+</div>
+
+<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 main-container">
+  <div class="col-md-10 col-lg-10 col-sm-10 zero-padding content-container">
+    <%= yield %>
+  </div>
+  <% if @menu != nil && !@menu.empty? %>
+      <div class="col-md-2 col-lg-2 col-sm-2 zero-padding panel panel-default">
+        <%= nav_menu_list_helper @menu %>
+      </div>
+  <% end %>
+</div>

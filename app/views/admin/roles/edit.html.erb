@@ -1,0 +1,24 @@
+<%
+   # Defining breadcrumbs
+   @breadcrumbs = [
+           {:link => admin_roles_path, :title => t('backend_part.roles')},
+           {:title => @role.id, :link => '#'},
+           {:title => t('backend_part.manage')}
+   ]
+
+   # Defining menu
+   @menu = [
+           {:link => admin_roles_path, :title => t('backend_part.manage_roles'), :icon => 'list'},
+           {:link => new_admin_role_path, :title => t('backend_part.create_role'), :icon => 'file'},
+   ]
+%>
+
+<div class="page-header">
+  <h1><%= t('backend_part.role') %>
+    <small>&nbsp;<%= @role.name %></small>
+  </h1>
+</div>
+
+<div class="form">
+    <%= render 'form' %>
+</div>

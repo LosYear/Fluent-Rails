@@ -1,0 +1,30 @@
+<%%
+   # Defining breadcrumbs
+   @breadcrumbs = [
+           {:link => admin_<%= plural_table_name %>_path, :title => t('backend_part.<%= plural_table_name %>')},
+           {:title => t('backend_part.manage')}
+   ]
+
+   # Defining menu
+   @menu = [
+           {:link => admin_<%= plural_table_name %>_path, :title => t('backend_part.manage_<%= plural_table_name %>'), :icon => 'list'},
+           {:link => new_admin_<%= singular_table_name %>_path, :title => t('backend_part.create_<%= singular_table_name %>'), :icon => 'file'},
+   ]
+%>
+
+<div class="page-header">
+  <h1><%%= t('backend_part.<%= singular_table_name %>') %>
+    <small> <%%= t('backend_part.manage') %></small>
+  </h1>
+</div>
+
+<%% columns = [
+        <% attributes.reject(&:password_digest?).each do |attribute| -%>
+            {:name => '<%= attribute.name %>', :searchable => true, :title => "<%= attribute.name %>"},
+        <% end -%>
+        {:name => 'actions_grid_column', :title => "Actions", :edit => method(:edit_admin_<%= singular_table_name %>_path), :remove => method(:admin_<%= singular_table_name %>_path), :sortable => false},
+] %>
+
+<%%= gridview_helper columns, {:class => "table table-striped table-bordered table-condensed",
+                              :source => admin_<%= plural_table_name %>_url,
+                              :fnDrawCallback => "function(){$('a#tooltip').tooltip()}"} %>

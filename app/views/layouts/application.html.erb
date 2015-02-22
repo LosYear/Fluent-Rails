@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Achieve</title>
+  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="#">Brand</a>
+  </div>
+
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav navbar-right">
+      <% if (user_signed_in?) && (current_user.role? 'admin') %>
+          <li><%= link_to(t('backend'), admin_path) %></li>
+      <% end %>
+      <% if user_signed_in? %>
+          <li><%= link_to('Logout', destroy_user_session_path, :method => 'delete') %></li>
+      <% else %>
+          <li><%= link_to(t('user.sign_in'), new_user_session_path) %></li>
+          <li><%= link_to(t('user.sign_up'), new_user_registration_path) %></li>
+      <% end %>
+    </ul>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Link</a></li>
+      <li><a href="#">Link</a></li>
+    </ul>
+  </div>
+</nav>
+<% flash.each do |name, msg| %>
+    <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+<% end %>
+
+<%= yield %>
+<!-- Page Rendered in <%= sprintf('%.3f', (Time.now.usec - @start_time).abs / 1000000.0) %> seconds -->
+</body>
+</html>

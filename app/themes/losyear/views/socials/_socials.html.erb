@@ -1,0 +1,10 @@
+<div class="list">
+  <% socials.each do |element|%>
+      <div class="social col-lg-4 col-md-4 col-sm-12 col-xs-12 hvr-bob" >
+        <a href="<%= element.link %>">
+            <%= image_tag element.logo.url(:home) %>
+            <h3><%= element.title %></h3>
+        </a>
+      </div>
+  <% end %>
+</div>

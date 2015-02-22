@@ -1,0 +1,16 @@
+h2{
+  text-transform: uppercase;
+  font-family: 'GothamRoundedBookMedium';
+  font-size: 1.1em;
+  letter-spacing: 0.15em;
+  margin-bottom: 30px;
+}
+
+div.separator{
+  width: 50%;
+  height: 13px;
+  background: url('separator.png') no-repeat 50%;
+  margin-bottom: 70px;
+  margin-left: auto;
+  margin-right: auto;
+}

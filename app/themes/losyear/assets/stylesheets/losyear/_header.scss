@@ -1,0 +1,73 @@
+header{
+  height: 800px;
+  padding-top: 30px;
+  width: 100%;
+  background: url("header-bg.png") no-repeat 50%;
+  background-size: cover;
+
+  text-align: center;
+  font-family: 'GothamRoundedBook';
+
+  h1{
+    padding: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 150px;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    font-size: 2.8em;
+    letter-spacing: 0.3em;
+
+    span{
+      color: #a1a9b0;
+    }
+  }
+
+  h1.slogan{
+    font-size: 1.1em;
+    letter-spacing: 0.15em;
+    color: #8c9398;
+    text-transform: capitalize;
+    margin-top: 0;
+  }
+
+  h1.navbar-brand{
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  h1.page-title{
+    margin-left: 15px;
+    font-size: 2em;
+    letter-spacing: 0.15em;
+    color: #8c9398;
+    text-transform: uppercase;
+    margin-top: 100px;
+    font-family: 'Comfortaa';
+  }
+
+  @media (max-width: 768px){
+    h1{
+      margin-top: 30px;
+    }
+    &{
+      height: 450px;
+      padding-top: 10px;
+    }
+  }
+}
+
+nav{
+  li>a{
+    text-transform: uppercase;
+    font-family: 'Comfortaa', sans-serif;
+    letter-spacing: 0.15em;
+  }
+}
+
+header.minimized{
+  height: 400px;
+  -ms-background-position-y: 45%;
+  background-position-y: 45%;
+  text-align: left;
+}

@@ -1,0 +1,22 @@
+<%%
+    # Defining breadcrumbs
+    @breadcrumbs = [
+        {:link => admin_<%= plural_table_name %>_path, :title => t('backend_part.<%= singular_table_name %>')},
+        {:title => t('backend_part.create')}
+    ]
+
+    # Defining menu
+    @menu = [
+        {:link => admin_<%= plural_table_name %>_path, :title => t('backend_part.manage_<%= plural_table_name %>'), :icon => 'list'},
+    ]
+%>
+
+<div class="page-header">
+  <h1><%%= t('backend_part.<%= singular_table_name %>') %>
+    <small>&nbsp;<%%= t('backend_part.create') %></small>
+  </h1>
+</div>
+
+<div class="form">
+  <%%= render 'form' %>
+</div>

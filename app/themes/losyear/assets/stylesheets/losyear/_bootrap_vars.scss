@@ -1,0 +1,24 @@
+// Inverted navbar
+// Reset inverted navbar basics
+$navbar-inverse-color:                      black !default;
+$navbar-inverse-bg:                         rgba(0,0,0,0) !default;
+$navbar-inverse-border:                     none !default;
+
+// Inverted navbar links
+$navbar-inverse-link-color:                 black !default;
+$navbar-inverse-link-hover-color:           lighten($navbar-inverse-link-color, 15%) !default;
+$navbar-inverse-link-hover-bg:              transparent !default;
+$navbar-inverse-link-active-color:          $navbar-inverse-link-hover-color !default;
+$navbar-inverse-link-active-bg:             transparent !default;
+$navbar-inverse-link-disabled-color:        #444 !default;
+$navbar-inverse-link-disabled-bg:           transparent !default;
+
+// Inverted navbar brand label
+$navbar-inverse-brand-color:                black !default;
+$navbar-inverse-brand-hover-color:          black !default;
+$navbar-inverse-brand-hover-bg:             transparent !default;
+
+// Inverted navbar toggle
+$navbar-inverse-toggle-hover-bg:            transparent !default;
+$navbar-inverse-toggle-icon-bar-bg:         #372c3c !default;
+$navbar-inverse-toggle-border-color:        transparent !default;
