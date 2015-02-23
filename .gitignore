@@ -18,3 +18,13 @@
 # Ignore IDE files
 /.idea
 .keep
+
+# Ignore password file
+/config/database.yml
+
+# Ignore Capistrano files
+/config/deploy/
+
+# Other
+/shared/
+/public/system/
