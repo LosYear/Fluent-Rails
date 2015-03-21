@@ -27,19 +27,19 @@ div.blog-posts{
       right: 0;
       height: 32px;
       width: 32px;
-      background-image: url('text-post.png');
+      background-image: asset-url('losyear/text-post.png');
     }
 
     &.text-post div.post-badge{
-      background-image: url('text-post.png');
+      background-image: asset-url('losyear/text-post.png');
     }
 
     &.twitter-post div.post-badge{
-      background-image: url('twitter-post.png');
+      background-image: asset-url('losyear/twitter-post.png');
     }
 
     &.instagram-post div.post-badge{
-      background-image: url('instagram-post.png');
+      background-image: asset-url('losyear/instagram-post.png');
     }
 
     img{

@@ -68,7 +68,22 @@ end
     invoke 'unicorn:restart'
   end
 
+
+  desc 'Fixing permissions'
+  task :fix_permissions do
+    run "chmod 777 -R #{shared_path}/public/assets"
+  end
+
+  desc 'Recompiling assets'
+  task :assets_recompile do
+    run("cd #{deploy_path}/current && /usr/bin/env rake `assets:clobber` RAILS_ENV=production")
+    run("cd #{deploy_path}/current && /usr/bin/env rake `assets:precompile` RAILS_ENV=production")
+  end
+
   #after :publishing, :smlnk
+  after :deploy, 'deploy:migrate'
+  after :deploy, :fix_permissions
+  after :deploy, :assets_recompile
   after :publishing, :restart
 
   #after :finishing, 'deploy:cleanup'
@@ -83,10 +98,6 @@ end
 
 namespace :unicorn do
   unicorn_pid = "/home/www/losyar.ru/home/run/unicorn.pid"
-
-  def run_unicorn
-     execute :run, "unicorn_rails -c #{release_path}/config/unicorn.rb -D -E #{fetch(:stage)}"
-  end
 
   desc 'Start Unicorn'
   task :start do
@@ -124,7 +135,7 @@ namespace :unicorn do
       if test "[ -f #{unicorn_pid} ]"
         execute :kill, "-USR2 `cat #{unicorn_pid}`"
       else
-        run_unicorn
+        invoke 'unicorn:start'
       end
     end
   end

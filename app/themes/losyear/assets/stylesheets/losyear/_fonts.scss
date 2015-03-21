@@ -1,17 +1,17 @@
 @font-face {
   font-family: 'GothamRoundedBook';
-  src: url('gothamrnd-book.eot');
-  src: url('gothamrnd-book.eot') format('embedded-opentype'),
-  url('gothamrnd-book.woff') format('woff'),
-  url('gothamrnd-book.ttf') format('truetype'),
-  url('gothamrnd-book.svg#GothamRoundedBook') format('svg');
+  src: asset-url('losyear/gothamrnd-book.eot');
+  src: asset-url('losyear/gothamrnd-book.eot') format('embedded-opentype'),
+  asset-url('losyear/gothamrnd-book.woff') format('woff'),
+  asset-url('losyear/gothamrnd-book.ttf') format('truetype'),
+  asset-url('losyear/gothamrnd-book.svg#GothamRoundedBook') format('svg');
 }
 
 @font-face {
   font-family: 'GothamRoundedBookMedium';
-  src: url('gothamrnd-medium.eot');
-  src: url('gothamrnd-medium.eot') format('embedded-opentype'),
-  url('gothamrnd-medium.woff') format('woff'),
-  url('gothamrnd-medium.ttf') format('truetype'),
-  url('gothamrnd-medium.svg#GothamRoundedMedium') format('svg');
+  src: asset-url('losyear/gothamrnd-medium.eot');
+  src: asset-url('losyear/gothamrnd-medium.eot') format('embedded-opentype'),
+  asset-url('losyear/gothamrnd-medium.woff') format('woff'),
+  asset-url('losyear/gothamrnd-medium.ttf') format('truetype'),
+  asset-url('losyear/gothamrnd-medium.svg#GothamRoundedMedium') format('svg');
 }
