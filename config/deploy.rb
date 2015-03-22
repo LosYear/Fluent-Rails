@@ -34,6 +34,12 @@ set :scm, :git
 
 # Default value for keep_releases is 5
 set :keep_releases, 5
+set :assets_roles, [:web, :app]
+
+# Unicorn config
+set :unicorn_pid, "/home/www/losyar.ru/home/run/unicorn.pid"
+set :unicorn_config_path, "#{deploy_path}/current/config/unicorn.rb"
+set :unicorn_rack_env, fetch(:stage)
 
 namespace :deploy do
 
@@ -63,81 +69,30 @@ end
   end
 
 
-  desc 'Restart application'
-  task :restart do
-    invoke 'unicorn:restart'
-  end
-
-
   desc 'Fixing permissions'
   task :fix_permissions do
-    run "chmod 777 -R #{shared_path}/public/assets"
+    on roles(:all) do
+      execute :chmod, "777 -R #{shared_path}/public/assets"
+      execute :chmod, "777 -R #{release_path}/public/assets"
+    end
   end
 
   desc 'Recompiling assets'
-  task :assets_recompile do
-    run("cd #{deploy_path}/current && /usr/bin/env rake `assets:clobber` RAILS_ENV=production")
-    run("cd #{deploy_path}/current && /usr/bin/env rake `assets:precompile` RAILS_ENV=production")
-  end
-
-  #after :publishing, :smlnk
-  after :deploy, 'deploy:migrate'
-  after :deploy, :fix_permissions
-  after :deploy, :assets_recompile
-  after :publishing, :restart
-
-  #after :finishing, 'deploy:cleanup'
-  #after :finishing, 'deploy:restart'
-
- # after :updating, 'deploy:smlnk'
-
- # before :setup, :setup_i
-
-
-end
-
-namespace :unicorn do
-  unicorn_pid = "/home/www/losyar.ru/home/run/unicorn.pid"
-
-  desc 'Start Unicorn'
-  task :start do
+  task :assets_clobber do
     on roles(:all) do
       within current_path do
         with rails_env: fetch(:rails_env) do
-          execute :bundle, "exec unicorn -c #{release_path}/config/unicorn.rb -D -E #{fetch(:stage)}"
+          execute :rake, "assets:clobber"
+          #execute :rake, "assets:precompile"
         end
       end
     end
   end
 
-  desc 'Stop unicorn'
-  task :stop do
-    on roles(:app) do
-      if test "[ -f #{unicorn_pid} ]"
-        execute :kill, "-QUIT `cat #{unicorn_pid}`"
-      end
-    end
-  end
+  #after :publishing, :smlnk
 
-  desc 'Force stop unicorn (kill -9)'
-  task :force_stop do
-    on roles(:app) do
-      if test "[ -f #{unicorn_pid} ]"
-        execute :kill, "-9 `cat #{unicorn_pid}`"
-        execute :rm, unicorn_pid
-      end
-    end
-  end
+  before 'deploy:compile_assets', 'unicorn:stop'
+  after 'deploy:finished', 'unicorn:start'
 
-  desc 'Restart unicorn'
-  task :restart do
-    on roles(:app) do
-      if test "[ -f #{unicorn_pid} ]"
-        execute :kill, "-USR2 `cat #{unicorn_pid}`"
-      else
-        invoke 'unicorn:start'
-      end
-    end
-  end
+
 end
-
