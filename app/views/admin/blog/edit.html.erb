@@ -1,0 +1,24 @@
+<%
+   # Defining breadcrumbs
+   @breadcrumbs = [
+           {:link => admin_posts_path, :title => t('backend_part.blog')},
+           {:title => @post.title, :link => '#'},
+           {:title => t('backend_part.manage')}
+   ]
+
+   # Defining menu
+   @menu = [
+           {:link => admin_posts_path, :title => t('backend_part.manage_news'), :icon => 'list'},
+           {:link => new_admin_post_path, :title => t('backend_part.create_post'), :icon => 'file'},
+   ]
+%>
+
+<div class="page-header">
+  <h1><%= t('backend_part.posts') %>
+    <small>&nbsp;<%= @post.title %></small>
+  </h1>
+</div>
+
+<div class="form">
+    <%= render 'form' %>
+</div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150220213013) do
+ActiveRecord::Schema.define(version: 20150322203348) do
 
   create_table "blocks", force: true do |t|
     t.string   "title"
@@ -79,6 +79,17 @@ ActiveRecord::Schema.define(version: 20150220213013) do
   add_index "nodes", ["author"], name: "author", using: :btree
   add_index "nodes", ["slug"], name: "slug", unique: true, using: :btree
   add_index "nodes", ["updater"], name: "updater", using: :btree
+
+  create_table "posts", force: true do |t|
+    t.string   "title"
+    t.text     "content"
+    t.text     "preview"
+    t.string   "slug"
+    t.string   "type"
+    t.integer  "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "roles", force: true do |t|
     t.datetime "created_at"

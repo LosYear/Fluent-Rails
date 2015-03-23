@@ -40,6 +40,7 @@ Fluent::Application.routes.draw do
     resources :pages
     resources :news
     resources :blocks
+    resources :blog, as: 'posts'
     resources :menus
     resources :menu_items do
       collection do

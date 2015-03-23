@@ -1,0 +1,31 @@
+<%
+   # Defining breadcrumbs
+   @breadcrumbs = [
+           {:link => admin_posts_path, :title => t('backend_part.blog')},
+           {:title => t('backend_part.manage')}
+   ]
+
+   # Defining menu
+   @menu = [
+           {:link => admin_posts_path, :title => t('backend_part.manage_posts'), :icon => 'list'},
+           {:link => new_admin_post_path, :title => t('backend_part.create_post'), :icon => 'file'},
+   ]
+%>
+
+<div class="page-header">
+  <h1><%= t('backend_part.blog') %>
+    <small> <%= t('backend_part.manage') %></small>
+  </h1>
+</div>
+
+<%
+   columns = [
+           {:name => 'title', :searchable => true, :title => t('activerecord.attributes.post.title')},
+           {:name => 'slug', :searchable => true, :title => t('activerecord.attributes.post.slug')},
+           {:name => 'actions_grid_column', :title => t('backend_part.actions'), :edit => method(:edit_admin_post_path), :remove => method(:admin_posts_path)},
+   ]
+%>
+
+<%= gridview_helper columns, {:class => "table table-striped table-bordered table-condensed",
+                              :source => admin_posts_url,
+                              :fnDrawCallback => "function(){$('a#tooltip').tooltip()}"} %>
