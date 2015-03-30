@@ -41,20 +41,5 @@ module BootstrapHelper
     end
   end
 
-  # Generates tools column
-  def actions_grid_column edit_link, destroy_link
-    result = ""
-
-    result << unless edit_link.nil?
-                link_to icon('pencil'), edit_link, 'data-original-title' => t('backend_part.edit'), 'id' => 'tooltip', :data => {:push => true}
-              end
-
-    result << unless destroy_link.nil?
-                link_to icon('trash'), destroy_link, 'data-original-title' => t('backend_part.remove'), 'id' => 'tooltip',  :method => :delete, :confirm => "#{t("backend_part.confirm")}", :data => {:push => true}
-              end
-
-    result.html_safe
-  end
-
 
 end

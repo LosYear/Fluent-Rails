@@ -1,0 +1,6 @@
+<div class="datagrid-table">
+  <%= datagrid_table @socials_grid, :html => {:class => "table table-striped table-bordered table-condensed"} %>
+</div>
+<div class="datagrid-pagination">
+  <%= will_paginate @socials_grid.assets, renderer: BootstrapPagination::Rails  %>
+</div>

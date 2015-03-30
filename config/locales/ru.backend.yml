@@ -7,6 +7,7 @@ ru:
     create_user: "Создать пользователя"
     edit: "Редактировать"
     remove: "Удалить"
+    maintance: "Обслуживание"
     user: "Пользователь"
     save: "Сохранить"
     cancel: "Отмена"
@@ -57,6 +58,10 @@ ru:
     create_post: "Новый пост"
     posts: "Записи"
     post: "Запись"
+    import_tweets: "Импортировать твиты"
+    post_types:
+      post: "Запись"
+      tweet: "Твит"
 
   activerecord:
     attributes:
@@ -94,6 +99,7 @@ ru:
         url: "Ссылка"
         status: "Опубликовано?"
         parent_id: "Родитель"
+        data_push: "Использовать Wiselinks?"
       social:
         title: "Заголовок"
         link: "Ссылка"
@@ -106,6 +112,7 @@ ru:
         slug: "URL"
         status: "Опубликовано?"
         preview: "Краткое содержание"
+        type: "Тип"
     errors:
       models:
         role:
@@ -117,4 +124,3 @@ ru:
       create: "Создать"
       update: "Сохранить изменения"
       cancel: "Отмена"
-

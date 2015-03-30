@@ -4,17 +4,17 @@ class Admin::BlocksController < Admin::AdminController
   # GET /blocks
   # GET /blocks.json
   def index
-    @blocks = Block.all
-
-    columns = [
-        {:name => 'title', :searchable => true},
-        {:name => 'name', :searchable => true, :link => method(:edit_admin_block_path)},
-        {:name => 'actions_grid_column', :edit => method(:edit_admin_block_path), :remove => method(:admin_block_path)},
-    ]
+    @blocks_grid = Datagrids::BlocksGrid.new(params[:datagrids_blocks_grid]) do |scope|
+      scope.page(params[:page])
+    end
 
     respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: GridView::GridView.new(view_context, columns, Block) }
+      if request.xhr? && !request.wiselinks?
+        format.html{render partial: 'grid'}
+      else
+        format.html # index.html.erb
+        format.json {render json: Block}
+      end
     end
   end
 

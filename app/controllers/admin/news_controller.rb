@@ -4,17 +4,17 @@ class Admin::NewsController < Admin::AdminController
   # GET /news
   # GET /news.json
   def index
-    @news = News.all
-
-    columns = [
-        {:name => 'title', :searchable => true, :link => method(:edit_admin_news_path)},
-        {:name => 'slug', :searchable => true},
-        {:name => 'actions_grid_column', :edit => method(:edit_admin_news_path), :remove => method(:admin_news_path)},
-    ]
+    @news_grid = Datagrids::NewsGrid.new(params[:datagrids_news_grid]) do |scope|
+      scope.page(params[:page])
+    end
 
     respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: GridView::GridView.new(view_context, columns, News) }
+      if request.xhr? && !request.wiselinks?
+        format.html{render partial: 'grid'}
+      else
+        format.html # index.html.erb
+        format.json {render json: News}
+      end
     end
   end
 

@@ -1,0 +1,7 @@
+<% title = I18n.t('blog') + " | " + Setting.title
+   wiselinks_title title
+   title title
+%>
+
+<%= render partial: 'layouts/header_minimized', locals: {subtitle: subtitle} %>
+<%= render partial: 'posts' %>

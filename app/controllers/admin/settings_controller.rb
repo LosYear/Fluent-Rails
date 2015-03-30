@@ -4,17 +4,17 @@ class Admin::SettingsController < Admin::AdminController
   # GET /blocks
   # GET /blocks.json
   def index
-    @setting = Setting.unscoped
-
-    columns = [
-        {:name => 'var', :searchable => true, :link => method(:edit_admin_setting_path)},
-        {:name => 'value', :searchable => true},
-        {:name => 'actions_grid_column', :edit => method(:edit_admin_setting_path), :remove => method(:admin_settings_path)},
-    ]
+    @settings_grid = Datagrids::SettingsGrid.new(params[:datagrids_settings_grid]) do |scope|
+      scope.page(params[:page])
+    end
 
     respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: GridView::GridView.new(view_context, columns, Settings) }
+      if request.xhr? && !request.wiselinks?
+        format.html{render partial: 'grid'}
+      else
+        format.html # index.html.erb
+        format.json {render json: News}
+      end
     end
   end
 

@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.2'
+gem 'rails'#, '4.0.2'
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
@@ -41,6 +41,7 @@ gem 'bootstrap-sass'
 gem "formtastic", "~> 2.3.0.rc2"
 gem "formtastic-bootstrap", "~> 3.0.0.rc.2"
 gem 'will_paginate'
+gem 'will_paginate-bootstrap'
 gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
 gem 'nprogress-rails'
 gem 'friendly_id'
@@ -65,6 +66,11 @@ end
 
 gem 'unicorn'
 
+gem 'twitter'
+gem 'tweetstream'
+gem 'datagrid'
+gem 'font-awesome-rails'
+gem 'emojione-rails'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]

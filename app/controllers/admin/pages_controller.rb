@@ -4,17 +4,17 @@ class Admin::PagesController < Admin::AdminController
   # GET /pages
   # GET /pages.json
   def index
-    @pages = Page.all
-
-    columns = [
-        {:name => 'title', :searchable => true, :link => method(:edit_admin_page_path)},
-        {:name => 'slug', :searchable => true},
-        {:name => 'actions_grid_column', :edit => method(:edit_admin_page_path), :remove => method(:admin_page_path)},
-    ]
+    @pages_grid = Datagrids::PagesGrid.new(params[:datagrids_pages_grid]) do |scope|
+      scope.page(params[:page])
+    end
 
     respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: GridView::GridView.new(view_context, columns, Page) }
+      if request.xhr? && !request.wiselinks?
+        format.html{render partial: 'grid'}
+      else
+        format.html # index.html.erb
+        format.json {render json: Page}
+      end
     end
   end
 

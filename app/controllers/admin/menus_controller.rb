@@ -4,21 +4,17 @@ class Admin::MenusController < Admin::AdminController
   # GET /menus
   # GET /menus.json
   def index
-    @menus = Menu.all
-
-    columns = [
-        {:name => 'name', :searchable => true,
-         :value => Proc.new do |data|
-           ActionController::Base.helpers.link_to(data.name, admin_menu_items_path(:menu_id => data.id), :data => {push: true})
-         end},
-        {:name => 'title', :searchable => true},
-        {:name => 'description', :searchable => true},
-        {:name => 'actions_grid_column', :edit => method(:edit_admin_menu_path), :remove => method(:admin_menu_path)},
-    ]
+    @menus_grid = Datagrids::MenusGrid.new(params[:datagrids_menus_grid]) do |scope|
+      scope.page(params[:page])
+    end
 
     respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: GridView::GridView.new(view_context, columns, Menu) }
+      if request.xhr? && !request.wiselinks?
+        format.html{render partial: 'grid'}
+      else
+        format.html # index.html.erb
+        format.json {render json: Menu}
+      end
     end
   end
 

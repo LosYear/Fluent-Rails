@@ -10,7 +10,6 @@ class ApplicationController < ActionController::Base
   end
 
   theme 'losyear'
-  require 'gridview/grid_view'
 
   private
 

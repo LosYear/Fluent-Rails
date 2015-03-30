@@ -1,0 +1,21 @@
+<%
+   # Defining breadcrumbs
+   @breadcrumbs = [
+           {:link => admin_posts_path, :title => t('backend_part.blog')},
+           {:title => t('backend_part.maintance')}
+   ]
+
+   # Defining menu
+   @menu = [
+           {:link => admin_posts_path, :title => t('backend_part.manage_posts'), :icon => 'list'},
+   ]
+%>
+
+<div class="page-header">
+  <h1><%= t('backend_part.blog') %>
+    <small> <%= t('backend_part.maintance') %></small>
+  </h1>
+</div>
+<div class="btn-group" role="group">
+    <a href="<%= import_tweets_admin_posts_url %>" class="btn btn-info"><span class="glyphicon glyphicon-cloud" aria-hidden="true"></span>&nbsp;<%= t('backend_part.import_tweets') %></a>
+</div>

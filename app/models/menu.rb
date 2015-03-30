@@ -1,5 +1,5 @@
 class Menu < ActiveRecord::Base
-  has_many :menu_items, :order => '`order` ASC', :dependent => :destroy
+  has_many :menu_items, -> {order('`order` ASC')}, dependent: :destroy
 
   @_tree = Hash.new
 
@@ -31,7 +31,7 @@ class Menu < ActiveRecord::Base
     end
     if items.has_key? parent_id
       items[parent_id].each do |item|
-        info = {:title => item.title, :url => item.url, :order => item.order, :id => item.id}
+        info = {:title => item.title, :url => item.url, :order => item.order, :id => item.id, :data_push => item.data_push}
         if parent_id == 0
           @_tree[item.id] = info
         else

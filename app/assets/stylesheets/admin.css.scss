@@ -2,6 +2,7 @@
  *= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
  *= require nprogress
  *= require nprogress-bootstrap
+ *= require font-awesome
 */
 @import "bootstrap-sprockets";
 @import "admin/bootstrap-theme";
@@ -48,4 +49,24 @@ ul.menu-admin span.glyphicon{
   cursor: pointer;
   margin-left: 5px;
   color: $green;
+}
+
+// Datagrid
+
+div.datagrid-table th div.order{
+  display: inline-block;
+  float: right;
+}
+
+div.datagrid-table table tr:first th{
+  cursor: pointer;
+}
+
+div.datagrid-table tr.datagrid-filters input, div.datagrid-table tr.datagrid-filters select{
+  width: 100%;
+  font-weight: normal;
+}
+
+div.datagrid-pagination{
+  float: right;
 }

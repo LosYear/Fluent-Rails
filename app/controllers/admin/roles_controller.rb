@@ -4,16 +4,17 @@ class Admin::RolesController < Admin::AdminController
   # GET /roles
   # GET /roles.json
   def index
-    @roles = Role.all
-
-    columns = [
-        {:name => 'name', :searchable => true, :link => method(:edit_admin_role_path)},
-        {:name => 'actions_grid_column', :edit => method(:edit_admin_role_path), :remove => method(:admin_role_path)},
-    ]
+    @roles_grid = Datagrids::RolesGrid.new(params[:datagrids_roles_grid]) do |scope|
+      scope.page(params[:page])
+    end
 
     respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: GridView::GridView.new(view_context, columns, Role) }
+      if request.xhr? && !request.wiselinks?
+        format.html{render partial: 'grid'}
+      else
+        format.html # index.html.erb
+        format.json {render json: Role}
+      end
     end
   end
 

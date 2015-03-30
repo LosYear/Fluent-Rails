@@ -1,0 +1,8 @@
+<div class="blog-posts">
+  <% @posts.each do |entity| %>
+      <%= render partial: entity.type, locals: {entity: entity} %>
+  <% end %>
+  <div class="wrapper">
+    <%= will_paginate @posts, page_links: false, renderer: ArrowedPagination::LinkRenderer %>
+  </div>
+</div>

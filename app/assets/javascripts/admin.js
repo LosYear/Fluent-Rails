@@ -1,8 +1,7 @@
-//= require dataTables/jquery.dataTables
-//= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
 //= require nprogress
 //= require admin/nprogress-wiselinks.js
-//= require admin/global.js.coffee
+// require admin/global.js.coffee
+//= require admin/global
 //= require admin/menu_admin.js.coffee
 // require ckeditor/override
 //= require ckeditor/init

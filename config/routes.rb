@@ -14,6 +14,7 @@ class NodeRouter
 end
 
 Fluent::Application.routes.draw do
+  default_url_options format: :html
   resources :socials
 
   mount Ckeditor::Engine => '/ckeditor'
@@ -31,6 +32,10 @@ Fluent::Application.routes.draw do
   devise_for :users, :path_names => {:sign_in => "login", :sign_out => "logout"}, :path => "user"
   resources :users
 
+  # Blog
+  get 'blog' => 'blog#index'
+  get 'blog/:id' => 'blog#show', as: :post
+
   namespace :admin do
     match '/' => 'users#index', via: :all
     resources :users
@@ -40,7 +45,12 @@ Fluent::Application.routes.draw do
     resources :pages
     resources :news
     resources :blocks
-    resources :blog, as: 'posts'
+    resources :blog, as: 'posts' do
+      collection do
+        get 'maintance'
+        get 'import_tweets'
+      end
+    end
     resources :menus
     resources :menu_items do
       collection do

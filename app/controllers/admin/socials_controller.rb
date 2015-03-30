@@ -4,18 +4,17 @@ class Admin::SocialsController < Admin::AdminController
   respond_to :html
 
   def index
-    @socials = Social.all
-
-    columns = [
-        {:name => 'title', :searchable => true, :link => method(:edit_admin_social_path)},
-        {:name => 'link', :searchable => true},
-        {:name => 'status', :searchable => false,},
-        {:name => 'actions_grid_column', :edit => method(:edit_admin_social_path), :remove => method(:admin_social_path)},
-    ]
+    @socials_grid = Datagrids::SocialsGrid.new(params[:datagrids_socials_grid]) do |scope|
+      scope.page(params[:page])
+    end
 
     respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: GridView::GridView.new(view_context, columns, Social) }
+      if request.xhr? && !request.wiselinks?
+        format.html{render partial: 'grid'}
+      else
+        format.html # index.html.erb
+        format.json {render json: News}
+      end
     end
   end
 

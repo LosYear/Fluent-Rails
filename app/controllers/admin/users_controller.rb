@@ -3,18 +3,17 @@ class Admin::UsersController < Admin::AdminController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
-
-    columns = [
-        {:name => 'id', :searchable => true},
-        {:name => 'email', :searchable => true, :link => method(:edit_admin_user_path)},
-        {:name => 'created_at', :searchable => true, :format => method(:format_date)},
-        {:name => 'actions_grid_column', :edit => method(:edit_admin_user_path), :remove => method(:admin_user_path)},
-    ]
+    @users_grid = Datagrids::UsersGrid.new(params[:datagrids_users_grid]) do |scope|
+      scope.page(params[:page])
+    end
 
     respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: GridView::GridView.new(view_context, columns, User) }
+      if request.xhr? && !request.wiselinks?
+        format.html{render partial: 'grid'}
+      else
+        format.html # index.html.erb
+        format.json {render json: News}
+      end
     end
   end
 

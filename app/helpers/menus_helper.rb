@@ -19,11 +19,11 @@ module MenusHelper
     menu.map do |key, item|
       if item.has_key? :items
         content_tag :li do
-          ((link_to item[:title], item[:url]).html_safe + content_tag(:ul, _render_menu(item[:items])).html_safe).html_safe
+          ((link_to item[:title], item[:url], :data => {:push => item[:data_push]}).html_safe + content_tag(:ul, _render_menu(item[:items])).html_safe).html_safe
         end
       else
         content_tag :li do
-          (link_to item[:title], item[:url]).html_safe
+          (link_to item[:title], item[:url], :data => {:push => item[:data_push]}).html_safe
         end
       end
     end.join.html_safe

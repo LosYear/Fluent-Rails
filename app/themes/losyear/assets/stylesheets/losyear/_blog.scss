@@ -1,7 +1,14 @@
 div.blog-posts{
+  padding-bottom: 50px;
+
   h2{
     margin-top: 0px;
     margin-bottom: 0px;
+
+    a, a:hover, a:visited{
+      color: black;
+      text-decoration: none;
+    }
   }
 
   div.blog-post{
@@ -11,6 +18,7 @@ div.blog-posts{
     div.post-header{
       margin-bottom: 20px;
       position: relative;
+
     }
 
     div.time{
@@ -44,6 +52,18 @@ div.blog-posts{
 
     img{
       max-width: 99%;
+    }
+  }
+
+  ul.pagination{
+    width:100%;
+
+    li.previous_page{
+      float:left;
+    }
+
+    li.next_page{
+      float:right;
     }
   }
 }
