@@ -28,3 +28,7 @@
 # Other
 /shared/
 /public/system/
+
+# Ignore vagrant
+/.vagrant
+*.lock
