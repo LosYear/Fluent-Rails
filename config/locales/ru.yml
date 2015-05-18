@@ -1,19 +1,2 @@
 ru:
-  backend: "Панель управления"
   blog: "Блог"
-  user:
-    logout: "Выход"
-    sign_in: "Вход"
-    sign_up: "Регистрация"
-  activerecord:
-    attributes:
-      user:
-       password: "Пароль"
-       email: "Email"
-       remember_me: "Запомнить меня"
-       roles: "Роли"
-       created_at: "Зарегистрирован"
-  will_paginate:
-    previous_label: "Предыдущая"
-    next_label: "Следующая"
-    page_gap: "..."

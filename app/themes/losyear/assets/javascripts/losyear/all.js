@@ -2,7 +2,7 @@
 //= require jquery_ujs
 //= require nprogress
 //= require wiselinks
-//= require admin/nprogress-wiselinks.js
+//= require fluent/admin/nprogress-wiselinks.js
 //= require bootstrap
 //= require losyear/blog
 

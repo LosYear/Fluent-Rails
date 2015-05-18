@@ -1,0 +1,37 @@
+<ul class="nav navbar-nav">
+  <li class="dropdown">
+	<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-book"></span>&nbsp;<%= t('backend_part.content') %> <b class="caret"></b></a>
+	<ul class="dropdown-menu">
+	  <li><a data-push="true" href="<%= fluent.admin_news_index_url %>"><span class="glyphicon glyphicon-leaf"></span>&nbsp;<%= t('backend_part.news') %></a></li>
+	  <li><a data-push="true" href="<%= fluent.admin_pages_url %>"><span class="glyphicon glyphicon-file"></span>&nbsp;<%= t('backend_part.pages') %></a></li>
+	  <li><a data-push="true" href="<%= fluent.admin_blocks_url %>"><span class="glyphicon glyphicon-th-large"></span>&nbsp;<%= t('backend_part.blocks') %></a></li>
+	  <li><a data-push="true" href="<%= main_app.admin_socials_url %>"><span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;<%= t('backend_part.socials') %></a></li>
+	</ul>
+  </li>
+
+  <li class="dropdown">
+	<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span>&nbsp;<%= t('backend_part.users') %> <b class="caret"></b></a>
+	<ul class="dropdown-menu">
+	  <li><a data-push="true" href="<%= fluent.admin_users_url %>"><span class="glyphicon glyphicon-user"></span>&nbsp;<%= t('backend_part.users') %></a></li>
+	  <li><a data-push="true" href="<%= fluent.admin_roles_url %>"><span class="glyphicon glyphicon-asterisk"></span>&nbsp;<%= t('backend_part.roles') %></a></li>
+	</ul>
+  </li>
+  <li>
+	<a href="<%= fluent.admin_menus_url %>" data-push="true"><span class="glyphicon glyphicon-book"></span>&nbsp;<%= t('backend_part.menus') %></a>
+  </li>
+  <li>
+	<a href="<%= main_app.admin_posts_url %>" data-push="true"><i class="fa fa-newspaper-o"></i>&nbsp;<%= t('backend_part.blog') %></a>
+  </li>
+  <li>
+	<a href="<%= main_app.admin_socials_url %>" data-push="true"><i class="fa fa-th"></i>&nbsp;<%= t('backend_part.socials') %></a>
+  </li>
+</ul>
+
+<ul class="nav navbar-nav navbar-right">
+  <li>
+	<%= link_to fluent.destroy_user_session_path, :method => 'delete' do %>
+		<span class="glyphicon glyphicon-off"></span>
+		<%= t('user.logout') %>
+	<% end %>
+  </li>
+</ul>

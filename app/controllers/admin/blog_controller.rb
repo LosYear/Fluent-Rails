@@ -1,4 +1,4 @@
-class Admin::BlogController < Admin::AdminController
+class Admin::BlogController < Fluent::Admin::AdminController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :set_twitter_client, only: [:import_tweets]
   def index

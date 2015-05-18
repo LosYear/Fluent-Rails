@@ -4,6 +4,7 @@
 Vagrant.configure(2) do |config|
   config.vm.box = "chef/debian-7.8"
   config.vm.network "forwarded_port", guest: 3000, host: 3000
+  config.vm.network "forwarded_port", guest: 3306, host: 3306
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
   #config.vm.network "private_network", ip: "192.168.33.10"
@@ -17,7 +18,7 @@ Vagrant.configure(2) do |config|
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
-  # config.vm.synced_folder "../data", "/vagrant_data"
+  config.vm.synced_folder "../../fluent", "/fluent"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
@@ -104,13 +105,16 @@ Vagrant.configure(2) do |config|
 	chef.add_recipe "nodejs"
 	chef.add_recipe "mysql::server"
 	chef.add_recipe "mysql::client"
+	chef.add_recipe "imagemagick"
 	chef.add_recipe "rbenv"
 	chef.add_recipe "rbenv::ruby_build"
 	chef.add_recipe "rbenv-install-rubies"
 	
 	chef.json = {
 		mysql: {
-			server_root_password: '1111'
+			server_root_password: '1111',
+			allow_remote_root: true,
+			enable_utf8: 'true'
 		},
 		
 		rbenv_install_rubies: {
@@ -119,8 +123,4 @@ Vagrant.configure(2) do |config|
 		}
 	}
   end
-  
-  config.vm.provision "shell", inline: <<-SHELL
-	cd /vagrant/ && rails s -b 0.0.0.0 -p 3000 -q -d
-  SHELL
 end

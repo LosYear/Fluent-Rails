@@ -1,36 +1,37 @@
-class NodeRouter
-  def call env
-    slug = env['action_dispatch.request.path_parameters'][:path]
-    env['action_dispatch.request.path_parameters'][:id] = slug
+# class Fluent::NodeRouter
+  # def call env
+    # slug = env['action_dispatch.request.path_parameters'][:path]
+    # env['action_dispatch.request.path_parameters'][:id] = slug
 
-    type = Node.find_by(slug: slug).type
+    # type = Node.find_by(slug: slug).type
 
-    controller = type[0..type.index('#')-1]
-    action = type[type.index('#')+1..-1]
+    # controller = type[0..type.index('#')-1]
+    # action = type[type.index('#')+1..-1]
 
-    controller_class= (controller + '_controller').camelize.constantize
-    controller_class.action(action.to_sym).call(env)
-  end
-end
+   # # controller_class= (controller + '_controller').camelize.constantize
+   # controller_class= (controller + 'Controller').camelize.constantize
+    # #@controller_class= ('Fluent::Pages_Controller').camelize.constantize
+    # controller_class.action(action.to_sym).call(env)
+  # end
+# end
 
 Fluent::Application.routes.draw do
   default_url_options format: :html
   resources :socials
 
-  mount Ckeditor::Engine => '/ckeditor'
+  mount Fluent::Engine => '/'
+ # mount Ckeditor::Engine => '/ckeditor'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  get '*path(.:format)', to: NodeRouter.new,
-      constraints: lambda { |request|
-        format_pos = request.path.index('.') || 0
-        Node.where(slug: request.path[1..format_pos-1]).count > 0
-      }, format: {}
+ # get '*path(.:format)', to: Fluent::NodeRouter.new,
+  #    constraints: lambda { |request|
+   #     format_pos = request.path.index('.') || 0
+    #    Node.where(slug: request.path[1..format_pos-1]).count > 0
+     # }, format: {}
 
   root 'main#index'
-  devise_for :users, :path_names => {:sign_in => "login", :sign_out => "logout"}, :path => "user"
-  resources :users
 
   # Blog
   get 'blog' => 'blog#index'
@@ -38,26 +39,32 @@ Fluent::Application.routes.draw do
 
   namespace :admin do
     match '/' => 'users#index', via: :all
-    resources :users
     resources :socials
-    resources :settings
-    resources :roles
-    resources :pages
-    resources :news
-    resources :blocks
     resources :blog, as: 'posts' do
       collection do
         get 'maintance'
         get 'import_tweets'
       end
     end
-    resources :menus
-    resources :menu_items do
-      collection do
-        post 'change_order'
-      end
-    end
   end
+
+  # scope module: 'fluent' do
+    # namespace :admin do
+      # resources :pages
+      # resources :news
+      # resources :users
+      # resources :roles
+      # resources :settings
+
+      # resources :menus
+      # resources :menu_items do
+        # collection do
+          # post 'change_order'
+        # end
+      # end
+
+    # end
+  # end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

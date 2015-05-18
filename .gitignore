@@ -13,6 +13,7 @@
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
+/config/*.log
 /tmp
 
 # Ignore IDE files
@@ -28,7 +29,9 @@
 # Other
 /shared/
 /public/system/
+/public/ckeditor_assets/
 
 # Ignore vagrant
 /.vagrant
 *.lock
+/cookbooks/

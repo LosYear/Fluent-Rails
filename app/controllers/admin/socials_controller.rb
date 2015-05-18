@@ -1,4 +1,4 @@
-class Admin::SocialsController < Admin::AdminController
+class Admin::SocialsController < Fluent::Admin::AdminController
   before_action :set_social, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
