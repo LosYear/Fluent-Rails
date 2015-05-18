@@ -71,13 +71,12 @@ gem 'tweetstream'
 gem 'emojione-rails'
 
 
-group :development do
-  gem 'fluent', path: '/fluent'
-end
+#group :development do
+#  gem 'fluent', path: '/fluent'
+#end
 
-group :production do
-  gem 'fluent', github: 'LosYear/FluentCMS-Rails'
-end
+gem 'fluent', github: 'LosYear/FluentCMS-Rails'
+
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]

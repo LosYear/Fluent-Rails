@@ -1,5 +1,5 @@
 # config valid only for current version of Capistrano
-lock '3.3.5'
+lock '3.4.0'
 
 set :application, 'losyar-home'
 set :repo_url, 'https://github.com/LosYear/Fluent-Rails.git'
